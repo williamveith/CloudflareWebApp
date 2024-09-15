@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Services</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #c5c6c7;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #3010b2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #2e2e2e;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #3c3c3c;
+            text-align: left;
+        }
+        th {
+            background-color: #121212;
+            color: #4524cf;
+        }
+        tr:hover {
+            background-color: #3c3c3c;
+        }
+        a {
+            color: #66fcf1;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Available Services</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Route</th>
+                <th>Function</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="/">/</a></td>
+                <td>home_handler</td>
+                <td>Displays the home page with available services.</td>
+            </tr>
+            <tr>
+                <td><a href="/ws/logs">/ws/logs</a></td>
+                <td>log_handler</td>
+                <td>Streams Docker logs in real-time via WebSocket.</td>
+            </tr>
+            <!-- Add more rows here if needed -->
+        </tbody>
+    </table>
+</body>
+</html>
