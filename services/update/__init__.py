@@ -11,7 +11,7 @@ async def update_handler(request: Request):
         # Attempt to pull the latest changes
         print("Attempting to pull latest changes...")
         pull_result = subprocess.run(
-            ["git", "-C", str(repo_path), "pull", "origin", "main"],  # Runs pull in the specified directory
+            ["git", "pull"],  # Runs pull in the specified directory
             check=True,
             capture_output=True,
             text=True
