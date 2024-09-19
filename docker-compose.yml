@@ -1,14 +1,6 @@
 services:
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    container_name: containers
-    environment:
-      TUNNEL_TOKEN: # cloudflared tunnel token 26d72e15-8b31-4b37-8e7a-d2e3b3ad5cba
-      LOGLEVEL: debug
-    restart: unless-stopped
-    networks:
-      - wg-network
-
+# cloudflared tunnel token 26d72e15-8b31-4b37-8e7a-d2e3b3ad5cba
+# cloudflared tunnel run --token
   fastapi:
     build:
       context: .

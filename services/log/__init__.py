@@ -4,7 +4,7 @@ import asyncio
 
 async def log_handler(websocket: WebSocket):
     await websocket.accept()
-    command = ["docker", "logs", "-f", "wireguard"]
+    command = ["docker", "logs", "-f", "fastapi_app"]
     process = await asyncio.create_subprocess_exec(*command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     while True:
