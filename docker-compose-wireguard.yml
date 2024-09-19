@@ -1,0 +1,45 @@
+services:
+  wireguard:
+    image: linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      net.ipv4.conf.all.src_valid_mark: '1'
+    environment:
+      PUID: "${PUID:-$(id -u)}"
+      PGID: "${PGID:-$(id -g)}"
+      TZ: "${TZ:-$(cat /etc/timezone || echo 'Etc/UTC')}"
+      SERVERURL: 'containers.williamveith.com'
+      SERVERPORT: '51820'
+      PEERS: '1'
+      PEERDNS: 'auto'
+      INTERNAL_SUBNET: '10.13.13.0/24'
+    volumes:
+      - type: tmpfs
+        target: /config
+        tmpfs:
+          size: 6m  
+    ports:
+      - '51820:51820/udp'
+    restart: unless-stopped
+    networks:
+      - wg-network
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: services.Dockerfile
+    container_name: fastapi_app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./services:/app
+    restart: unless-stopped
+    networks:
+      - wg-network
+
+networks:
+  wg-network:
+    driver: bridge
